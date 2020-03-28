@@ -1,28 +1,39 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" v-on:click="e => hideCalendarZone(e)">
+    <Header />
+    <Main />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Header from './components/Header';
+import Main from './components/Main';
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Header,
+    Main,
+  },
+  methods: {
+    hideCalendarZone: function (e) {
+      if (!e.target.className.includes('calendar-child')) {
+        document.querySelector('.calendar-zone').style.display = "none";
+      }
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+  background-color: #F0F6FC;
+  padding: 0 38px;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+button, select, input {
+  border: 0;
+  outline: 0;
 }
 </style>
